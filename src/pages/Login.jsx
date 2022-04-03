@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate, withRouter } from 'react-router-dom';
 import MarlogContext from '../contex/MarlogContext';
 import '../App.css';
 
@@ -8,6 +8,7 @@ function Login(props) {
 	const [msg, setMsg] = useState('');
 	const { history } = props;
 	const { employees, counter } = useContext(MarlogContext);
+	const nav = useNavigate();
 
 	let idInput = (e) => {
 		setId(e.target.value);
@@ -15,13 +16,13 @@ function Login(props) {
 
 	const loginId = (idInput) => {
 		if (idInput === '99999') history.push(`/meneger`);
-		let idIn = (employee) => employee.id === id;//for some function , is help him
+		let idIn = (employee) => employee.id === id; //for some function , is help him
 		if (employees.some(idIn) === false) {
 			if (idInput.length !== 0)
 				return setMsg('the number is not in the system .');
 		} else {
 			counter(id);
-			history.push(`/storage/${id}`);
+			nav(`/storage/${id}`);
 		}
 	};
 
@@ -47,4 +48,4 @@ function Login(props) {
 	);
 }
 
-export default withRouter(Login);
+export default Login;

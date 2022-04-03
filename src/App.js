@@ -8,8 +8,13 @@ import MarlogContext from './contex/MarlogContext';
 import './App.css';
 
 import React, { useState } from 'react';
-import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
+import {
+	HashRouter as Router,
+	Routes,
+	Route,
+	Link,
+	// useNavigate,
+} from 'react-router-dom';
 function App() {
 	const [employees, satEmployees] = useState([]);
 	const [products, setProducts] = useState([
@@ -50,23 +55,17 @@ function App() {
 				<Router>
 					<Header />
 					<div className="App">
-						<Switch>
-							<Route exact path="/">
-								<Home />
-							</Route>
-							<Route path="/login">
-								<Login />
-							</Route>
-							<Route path="/signup">
-								<SignUp />
-							</Route>
-							<Route path="/storage/:id">
-								<Storage />
-							</Route>
-							<Route path="/meneger">
-								<Meneger />
-							</Route>
-						</Switch>
+						<Routes>
+							<Route path="/" element={<Home />} />
+
+							<Route path="/login" element={<Login />} />
+
+							<Route path="/signup" element={<SignUp />} />
+
+							<Route path="/storage/:id" element={<Storage />} />
+
+							<Route path="/meneger" element={<Meneger />} />
+						</Routes>
 					</div>
 				</Router>
 			</MarlogContext.Provider>

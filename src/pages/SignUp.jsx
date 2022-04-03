@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useNavigate, withRouter } from 'react-router-dom';
 import MarlogContext from '../contex/MarlogContext';
 import '../App.css';
 function SignUp(props) {
@@ -8,6 +8,7 @@ function SignUp(props) {
 	const [idEmployee, setIdEmployee] = useState('');
 	const [fullName, SetFullName] = useState('');
 	const [malgeza, SetMalgeza] = useState('');
+	const nav = useNavigate();
 	let errorId = false;
 	let errorFN = false;
 	const handleSubmit = (e) => {
@@ -18,7 +19,7 @@ function SignUp(props) {
 			errorFN === true
 		) {
 			addEmployees(idEmployee, fullName, malgeza);
-			history.push('/');
+			nav('/');
 		} else return <p>check again the form</p>;
 	};
 
@@ -152,4 +153,4 @@ function SignUp(props) {
 	);
 }
 
-export default withRouter(SignUp);
+export default SignUp;
