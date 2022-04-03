@@ -18,7 +18,8 @@ function Meneger() {
 		));
 
 	return (
-		<div>
+		<div className="meneger-div">
+			<h3>טבלת כניסות וליקוטים</h3>
 			<table>
 				<thead>
 					<tr>

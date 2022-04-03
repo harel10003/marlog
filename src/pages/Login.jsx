@@ -15,7 +15,7 @@ function Login(props) {
 
 	const loginId = (idInput) => {
 		if (idInput === '99999') history.push(`/meneger`);
-		let idIn = (employee) => employee.id === id;
+		let idIn = (employee) => employee.id === id;//for some function , is help him
 		if (employees.some(idIn) === false) {
 			if (idInput.length !== 0)
 				return setMsg('the number is not in the system .');

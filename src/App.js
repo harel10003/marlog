@@ -3,22 +3,15 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Meneger from './pages/Meneger';
 import Storage from './pages/Storage';
+import Header from './component/Header';
 import MarlogContext from './contex/MarlogContext';
 import './App.css';
 
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
-	const [employees, satEmployees] = useState([
-		{
-			id: '12345',
-			fullName: 'harel sela',
-			malgeza: true,
-			countIn: 0,
-			countProduct: 0,
-		},
-	]);
+	const [employees, satEmployees] = useState([]);
 	const [products, setProducts] = useState([
 		{ id: 11122, name: 'green box', malgeza: false, mikum: false },
 		{ id: 22554, name: 'green box', malgeza: false, mikum: false },
@@ -31,7 +24,6 @@ function App() {
 		let temp = { id, fullName, malgeza, countIn: 0, countProduct: 0 };
 		if (employees.length === 0) {
 			satEmployees([{ ...temp }]);
-			console.log(employees);
 		} else satEmployees([...employees, { ...temp }]);
 	};
 	const counter = (id) => {
@@ -50,32 +42,16 @@ function App() {
 					counter,
 					satEmployees,
 					products,
+					setProducts,
 					addEmployees,
 					employees,
-					products,
-					setProducts,
 				}}
 			>
 				<Router>
-					<nav>
-						<ul>
-							<li>
-								<Link to="/home">Home</Link>
-							</li>
-							<li>
-								<Link to="/login">login</Link>
-							</li>
-							<li>
-								<Link to="/signup">signup</Link>
-							</li>
-							<li>
-								<Link to="/storage">storage</Link>
-							</li>
-						</ul>
-					</nav>
+					<Header />
 					<div className="App">
 						<Switch>
-							<Route path="/home">
+							<Route exact path="/">
 								<Home />
 							</Route>
 							<Route path="/login">

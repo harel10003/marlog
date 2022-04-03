@@ -15,6 +15,15 @@ table {
 	align-items: center;
 	text-align: center;
 }
+
+.header-nav {
+	position: relative;
+}
+.header-home {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+}
 .storage-products {
 	display: flex;
 	flex-direction: column;
@@ -46,6 +55,7 @@ table {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin: 50px;
 	width: 50%;
 	height: 50%;
 	background-color: gray;
@@ -72,7 +82,7 @@ table {
 	height: 50%;
 	background-color: gray;
 	border-radius: 20px;
-	margin: 30px;
+	margin: 50px;
 	padding: 30px;
 }
 .signup-label {
@@ -93,6 +103,7 @@ table {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin: 50px;
 	width: 50%;
 	height: 50%;
 	background-color: gray;
@@ -112,9 +123,15 @@ table {
 	font-size: 22px;
 	border-radius: 10px;
 }
+.storage-div {
+	margin: 50px;
+}
 .storage-logout {
 	margin: 0 0 0 50%;
 }
 .storage-link {
 	text-decoration-line: none;
+}
+.meneger-div {
+	margin: 50px;
 }

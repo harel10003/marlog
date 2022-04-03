@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { withRouter, Link, Route } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import MarlogContext from '../contex/MarlogContext';
 import '../App.css';
 function SignUp(props) {
@@ -18,7 +18,7 @@ function SignUp(props) {
 			errorFN === true
 		) {
 			addEmployees(idEmployee, fullName, malgeza);
-			history.push('/home');
+			history.push('/');
 		} else return <p>check again the form</p>;
 	};
 
@@ -32,7 +32,13 @@ function SignUp(props) {
 		SetMalgeza(e.target.value);
 	};
 	const inputSubmit = () => {
-		if (errorId === true && errorFN === true && malgeza !== '') {
+		if (
+			errorId !== true ||
+			errorFN !== true ||
+			malgeza === '' ||
+			idEmployee.toString().length === 0 ||
+			fullName.length === 0
+		) {
 			return true;
 		} else {
 			return false;
@@ -70,7 +76,9 @@ function SignUp(props) {
 		}
 		if ((count === 0 || fullName.length < 5) && fullName.length > 0) {
 			errorFN = false;
-			return <p>the name must contain minimum 4 characters. </p>;
+			return (
+				<p>the name must contain minimum 4 characters in two word. </p>
+			);
 		} else errorFN = true;
 	};
 
@@ -124,6 +132,7 @@ function SignUp(props) {
 						value="false"
 						onChange={handleChangeMalgeza}
 						required
+						checked="checked"
 					/>
 				</div>
 				<div>
@@ -133,8 +142,8 @@ function SignUp(props) {
 						style={{
 							cursor:
 								inputSubmit() === true
-									? 'pointer'
-									: 'not-allowed',
+									? 'not-allowed'
+									: 'pointer',
 						}}
 					/>
 				</div>

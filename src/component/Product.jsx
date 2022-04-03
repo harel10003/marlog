@@ -17,7 +17,6 @@ function Product({
 	let temp = filterProducts;
 	console.log(woekerIndex);
 	const changeMikum = (index) => {
-		debugger;
 		if (
 			(temp[index].malgeza === true && crtMalgeza == 'true') ||
 			temp[index].malgeza === false
